@@ -82,7 +82,7 @@ if (!function_exists('failureResponseWithErrors')) {
 if (!function_exists('infoLogger')) {
 
     /**
-     * Log an error message along with exception details and request information.
+     * Log an info message along with it's given details.
      *
      * @param string $message
      * @param array|object $data
@@ -98,18 +98,18 @@ if (!function_exists('infoLogger')) {
 if (!function_exists('errorLogger')) {
 
     /**
-     * Log an error message along with exception details and request information.
+     * Log an error message along with throwable details and request information.
      *
      * @param string $message
-     * @param \Exception $e
+     * @param Throwable $th
      * @return void
      */
 
-    function errorLogger(string $message, \Exception $e)
+    function errorLogger(string $message, Throwable $th)
     {
-        Log::error('' . $message . ' : ' . json_encode($e->getMessage()) . ' | ,
-                    Line no. : ' . $e->getLine() . ' | ,
-                    File name : ' . $e->getFile() . ' | ,
+        Log::error('' . $message . ' : ' . json_encode($th->getMessage()) . ' | ,
+                    Line no. : ' . $th->getLine() . ' | ,
+                    File name : ' . $th->getFile() . ' | ,
                     IP address : ' . request()->ip() . ' | ,
                     browser : ' . request()->header('User-Agent'));
     }

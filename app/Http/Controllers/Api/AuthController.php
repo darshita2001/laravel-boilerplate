@@ -56,9 +56,9 @@ class AuthController extends Controller implements HasMiddleware
 
             return failureResponse(__('messages.user_not_found'));
 
-        } catch (\Exception $e) {
-            errorLogger('AuthController@login ', $e);
-            return failureResponse($e->getMessage());
+        } catch (Throwable  $th) {
+            errorLogger('AuthController@login ', $th);
+            return failureResponse($th->getMessage());
         }
     }
 
@@ -82,9 +82,9 @@ class AuthController extends Controller implements HasMiddleware
             ];
 
             return successResponseWithData($data, __('messages.user_registered'), JsonResponse::HTTP_CREATED);
-        } catch (\Exception $e) {
-            errorLogger('AuthController@register ', $e);
-            return failureResponse($e->getMessage());
+        } catch (\Throwable $th) {
+            errorLogger('AuthController@register ', $th);
+            return failureResponse($th->getMessage());
         }
     }
 
@@ -131,9 +131,9 @@ class AuthController extends Controller implements HasMiddleware
             ];
 
             return successResponseWithData($data, __('messages.user_retrieved'));
-        } catch (\Exception $e) {
-            errorLogger('AuthController@userProfile ', $e);
-            return failureResponse($e->getMessage());
+        } catch (Throwable $th) {
+            errorLogger('AuthController@userProfile ', $th);
+            return failureResponse($th->getMessage());
         }
     }
 }
