@@ -5,7 +5,7 @@ It is a Laravel application with integrated jwt authentication and a global help
 - [Installation](#Installation)
 
 ## Prerequisites
-1. PHP >= 8.1
+1. PHP >= 8.2
 2. Composer
 3. Apache
 4. mySql
